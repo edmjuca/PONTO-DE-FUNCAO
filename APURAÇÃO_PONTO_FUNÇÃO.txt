@@ -229,7 +229,7 @@
                 except Exception as e:
                     print("Ocorreu o seguinte erro:", e)
                     
-             #Função que calcula o complexidade do ponto de função
+             #Função que calcula a complexidade do ponto de função
             def complexidade(tipo, qtd_registros, qtd_entidades):
                 try:
                     if tipo == "ALI" or tipo == "AIE":
