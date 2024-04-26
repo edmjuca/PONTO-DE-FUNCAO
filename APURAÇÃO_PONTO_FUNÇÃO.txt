@@ -291,26 +291,3 @@
                     print("Ocorreu o seguinte erro:", e)
 
 
-def apuração():
-    import pandas as pd
-    redmine = r'C:\XXXX\YYYYY\CCCCC\DDDD.csv' #Inserir o endereço do arquivo a ser utilizado para apuração
-    redmine_pd = pd.read_excel(redmine)
-    redmine_df = pd.DataFrame(redmine_pd)
-    redmine_dfi = redmine_df.reset_index(drop =True)
-    redmine_dfi['MÊS_ANO'] = redmine_dfi['MÊS_ANO'].dt.strftime('%m-%Y')
-    a=0
-    z = []
-    w=[]
-    p=[]
-    while a< len(redmine_dfi):
-        z.append(ponto_função(redmine_dfi.iat[a,1],redmine_dfi.iat[a,3],redmine_dfi.iat[a,2]))
-        w.append(complexidade(redmine_dfi.iat[a,1],redmine_dfi.iat[a,3],redmine_dfi.iat[a,2]))
-        p.append(ponto_função(redmine_dfi.iat[a,1],redmine_dfi.iat[a,3],redmine_dfi.iat[a,2])*374)
-        a+=1
-    redmine_dfi['Complexidade'] = w
-    redmine_dfi["PF"] = z
-    redmine_dfi["Valor"] = p
-    print("O valor total dos PF's é R$",sum(redmine_dfi["Valor"]),"e corresponde a", sum(redmine_dfi['PF']),"PF's")
-    redmine_dfi['Valor'] = redmine_dfi['Valor'].apply(lambda x: f"R$ {x:.2f}")
-    return redmine_dfi
-    
