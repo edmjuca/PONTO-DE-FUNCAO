@@ -1,0 +1,316 @@
+            #Dicionário com as pontuações conforme a quantidade de entidades e os respectivos atributos
+            TABELA = {
+                "tipo": {
+                    "ALI": {
+                        "RLR": {
+                            "Igual a 1": {
+                                "intervalo": {
+                                    "Entre 1 e 19": "Baixo",
+                                    "Entre 20 e 50": "Baixo",
+                                    "Maior que 50": "Médio"
+                                }
+                            },
+                            "Entre 2 e 5": {
+                                "intervalo": {
+                                    "Entre 1 e 19": "Baixo",
+                                    "Entre 20 e 50": "Médio",
+                                    "Maior que 50": "Alto"
+                                            }
+                            },
+                            "Maior que 5": {
+                                "intervalo": {
+                                    "Entre 1 e 19": "Médio",
+                                    "Entre 20 e 50": "Alto",
+                                    "Maior que 50": "Alto"
+                            }
+                        }
+                    }
+                },
+                    "AIE": {
+                        "RLR": {
+                            "1": {
+                                "intervalo": {
+                                    "Entre 1 e 19": "Baixo",
+                                    "Entre 20 e 50": "Baixo",
+                                    "Maior que 50": "Médio"
+                                    }
+                            },
+                            "Entre 2 e 5": {
+                                "intervalo": {
+                                    "Entre 1 e 19": "Baixo",
+                                    "Entre 20 e 50": "Médio",
+                                    "Maior que 50": "Alto"
+                                }
+                            },
+                            "Maior que 5": {
+                                "intervalo": {
+                                    "Entre 1 e 19": "Médio",
+                                    "Entre 20 e 50": "Alto",
+                                    "Maior que 50": "Alto"
+                                }
+                            }
+                        }
+                },
+                "SE": {
+                    "RLI": {
+                        "Entre 0 e 1": {
+                            "intervalo": {
+                                "Entre 1 e 5": "Baixo",
+                                "Entre 6 e 19": "Baixo",
+                                "Maior que 19": "Médio"
+                            }
+                        },
+                        "Entre 2 e 3": {
+                            "intervalo": {
+                                "Entre 1 e 5": "Baixo",
+                                "Entre 6 e 19": "Médio",
+                                "Maior que 19": "Alto"
+                            }
+                        },
+                        "Maior que 3": {
+                            "intervalo": {
+                                "Entre 1 e 5": "Médio",
+                                "Entre 6 e 19": "Alto",
+                                "Maior que 19": "Alto"
+                            }
+                        }
+                    }
+                },
+                "CE": {
+                    "RLI": {
+                        "Entre 0 e 1": {
+                            "intervalo": {
+                                "Entre 1 e 5": "Baixo",
+                                "Entre 6 e 19": "Baixo",
+                                "Maior que 19": "Médio"
+                            }
+                        },
+                        "Entre 2 e 3": {
+                            "intervalo": {
+                                "Entre 1 e 5": "Baixo",
+                                "Entre 6 e 19": "Médio",
+                                "Maior que 19": "Alto"
+                            }
+                        },
+                        "Maior que 3": {
+                            "intervalo": {
+                                "Entre 1 e 5": "Médio",
+                                "Entre 6 e 19": "Alto",
+                                "Maior que 19": "Alto"
+                            }
+                        }
+                    }
+                },
+                "EE":{
+                    "RLI": {
+                        "Entre 0 e 1": {
+                            "intervalo": {
+                                "Entre 1 e 4": "Baixo",
+                                "Entre 5 e 15": "Baixo",
+                                "Maior que 15": "Médio"
+                        }
+                    },
+                    "Igual a 2": {
+                        "intervalo": {
+                            "Entre 1 e 4": "Baixo",
+                            "Entre 5 e 15": "Médio",
+                            "Maior que 15": "Alto"
+                            }
+                    },
+                    "Maior que 2": {
+                        "intervalo": {
+                            "Entre 1 e 4": "Médio",
+                            "Entre 5 e 15": "Alto",
+                            "Maior que 15": "Alto"
+                        }
+                    }
+               }
+                    
+            }
+        },
+        "pontuação":{
+            "classificação": {
+                "ALI": {
+                    "intervalo":{
+                        "Baixo": 7,
+                        "Médio": 10,
+                        "Alto": 15
+                    }
+                },
+                "AIE":{
+                    "intervalo":{
+                        "Baixo": 5,
+                        "Médio": 7,
+                        "Alto": 10
+                    }
+                },
+                "EE":{
+                    "intervalo":{
+                        "Baixo": 3,
+                        "Médio": 4,
+                        "Alto": 6
+                    }
+                },
+                "SE":{
+                    "intervalo":{
+                        "Baixo": 4,
+                        "Médio": 5,
+                        "Alto": 7
+                    }
+                },
+                "CE":{
+                    "intervalo":{
+                        "Baixo": 3,
+                        "Médio": 4,
+                        "Alto": 6,
+                    }
+                }
+            }
+        }
+    }
+            #Função que calcula o ponto de função
+            def ponto_função(tipo, qtd_registros, qtd_entidades):
+                try:
+                    if tipo == "ALI" or tipo == "AIE":
+                        if qtd_registros == 1:
+                            qtd_registros = "Igual a 1"
+                        elif qtd_registros >= 2 and qtd_registros <=5:
+                            qtd_registros = "Entre 2 e 5"     
+                        elif qtd_registros >= 5:
+                            qtd_registros = "Maior que 5"
+            
+                        if qtd_entidades <= 19:
+                            intervalo = "Entre 1 e 19"
+                        elif qtd_entidades >= 20 and qtd_entidades <= 50:
+                            intervalo = "Entre 20 e 50"
+                        elif qtd_entidades >= 50:
+                            intervalo = "Maior que 50"
+        
+                    if tipo == "SE" or tipo == "CE":
+                        if qtd_registros == 0 or qtd_registros == 1:
+                            qtd_registros = "Entre 0 e 1"
+                        elif qtd_registros >= 2 and qtd_registros <=3:
+                            qtd_registros = "Entre 2 e 3"     
+                        elif qtd_registros >= 3:
+                            qtd_registros = "Maior que 3"
+        
+                        if qtd_entidades >= 1 and qtd_entidades <= 5:
+                            intervalo = "Entre 1 e 5"
+                        elif qtd_entidades >= 6 and qtd_entidades <= 19:
+                            intervalo = "Entre 6 e 19"
+                        elif qtd_entidades >= 19:
+                            intervalo = "Maior que 19"
+                
+                    if tipo =="EE":
+                        if qtd_registros == 0 or qtd_registros == 1:
+                            qtd_registros = "Entre 0 e 1"
+                        elif qtd_registros == 2:
+                            qtd_registros = "Igual a 2"     
+                        elif qtd_registros >= 2:
+                            qtd_registros = "Maior que 2"
+        
+                        if qtd_entidades >= 1 and qtd_entidades <= 4:
+                            intervalo = "Entre 1 e 4"
+                        elif qtd_entidades >= 5 and qtd_entidades <= 15:
+                            intervalo = "Entre 5 e 15"
+                        elif qtd_entidades >= 15:
+                            intervalo = "Maior que 15"
+                    if tipo in ['ALI', 'AIE']:
+                        consulta = TABELA['tipo'][tipo]['RLR'][qtd_registros]['intervalo'][intervalo]
+                        pontos= TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta]
+                        #print("O grau de complexidade é",consulta.upper(),"e o redmine representa",TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta],"pontos de função.")
+            
+                    if tipo in ['SE', 'CE', 'EE']:
+                        consulta = TABELA['tipo'][tipo]['RLI'][qtd_registros]['intervalo'][intervalo]
+                        pontos = TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta]
+                        #print("O grau de complexidade é",consulta.upper(),"e o redmine representa",TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta], "pontos de função.")     
+                    return pontos
+                    
+                except Exception as e:
+                    print("Ocorreu o seguinte erro:", e)
+                    
+             #Função que calcula o complexidade do ponto de função
+            def complexidade(tipo, qtd_registros, qtd_entidades):
+                try:
+                    if tipo == "ALI" or tipo == "AIE":
+                        if qtd_registros == 1:
+                            qtd_registros = "Igual a 1"
+                        elif qtd_registros >= 2 and qtd_registros <=5:
+                            qtd_registros = "Entre 2 e 5"     
+                        elif qtd_registros >= 5:
+                            qtd_registros = "Maior que 5"
+            
+                        if qtd_entidades <= 19:
+                            intervalo = "Entre 1 e 19"
+                        elif qtd_entidades >= 20 and qtd_entidades <= 50:
+                            intervalo = "Entre 20 e 50"
+                        elif qtd_entidades >= 50:
+                            intervalo = "Maior que 50"
+        
+                    if tipo == "SE" or tipo == "CE":
+                        if qtd_registros == 0 or qtd_registros == 1:
+                            qtd_registros = "Entre 0 e 1"
+                        elif qtd_registros >= 2 and qtd_registros <=3:
+                            qtd_registros = "Entre 2 e 3"     
+                        elif qtd_registros >= 3:
+                            qtd_registros = "Maior que 3"
+        
+                        if qtd_entidades >= 1 and qtd_entidades <= 5:
+                            intervalo = "Entre 1 e 5"
+                        elif qtd_entidades >= 6 and qtd_entidades <= 19:
+                            intervalo = "Entre 6 e 19"
+                        elif qtd_entidades >= 19:
+                            intervalo = "Maior que 19"
+                
+                    if tipo =="EE":
+                        if qtd_registros == 0 or qtd_registros == 1:
+                            qtd_registros = "Entre 0 e 1"
+                        elif qtd_registros == 2:
+                            qtd_registros = "Igual a 2"     
+                        elif qtd_registros >= 2:
+                            qtd_registros = "Maior que 2"
+        
+                        if qtd_entidades >= 1 and qtd_entidades <= 4:
+                            intervalo = "Entre 1 e 4"
+                        elif qtd_entidades >= 5 and qtd_entidades <= 15:
+                            intervalo = "Entre 5 e 15"
+                        elif qtd_entidades >= 15:
+                            intervalo = "Maior que 15"
+                    if tipo in ['ALI', 'AIE']:
+                        consulta = TABELA['tipo'][tipo]['RLR'][qtd_registros]['intervalo'][intervalo]
+                        pontos= TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta]
+                        #print("O grau de complexidade é",consulta.upper(),"e o redmine representa",TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta],"pontos de função.")
+            
+                    if tipo in ['SE', 'CE', 'EE']:
+                        consulta = TABELA['tipo'][tipo]['RLI'][qtd_registros]['intervalo'][intervalo]
+                        pontos = TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta]
+                        #print("O grau de complexidade é",consulta.upper(),"e o redmine representa",TABELA['pontuação']['classificação'][tipo]['intervalo'][consulta], "pontos de função.")     
+                    return consulta
+                    
+                except Exception as e:
+                    print("Ocorreu o seguinte erro:", e)
+
+
+def apuração():
+    import pandas as pd
+    redmine = r'C:\XXXX\YYYYY\CCCCC\DDDD.csv' #Inserir o endereço do arquivo a ser utilizado para apuração
+    redmine_pd = pd.read_excel(redmine)
+    redmine_df = pd.DataFrame(redmine_pd)
+    redmine_dfi = redmine_df.reset_index(drop =True)
+    redmine_dfi['MÊS_ANO'] = redmine_dfi['MÊS_ANO'].dt.strftime('%m-%Y')
+    a=0
+    z = []
+    w=[]
+    p=[]
+    while a< len(redmine_dfi):
+        z.append(ponto_função(redmine_dfi.iat[a,1],redmine_dfi.iat[a,3],redmine_dfi.iat[a,2]))
+        w.append(complexidade(redmine_dfi.iat[a,1],redmine_dfi.iat[a,3],redmine_dfi.iat[a,2]))
+        p.append(ponto_função(redmine_dfi.iat[a,1],redmine_dfi.iat[a,3],redmine_dfi.iat[a,2])*374)
+        a+=1
+    redmine_dfi['Complexidade'] = w
+    redmine_dfi["PF"] = z
+    redmine_dfi["Valor"] = p
+    print("O valor total dos PF's é R$",sum(redmine_dfi["Valor"]),"e corresponde a", sum(redmine_dfi['PF']),"PF's")
+    redmine_dfi['Valor'] = redmine_dfi['Valor'].apply(lambda x: f"R$ {x:.2f}")
+    return redmine_dfi
+    
